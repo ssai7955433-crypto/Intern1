@@ -1,0 +1,58 @@
+[
+  {
+    "id": "remote-notice",
+    "question": "How many business days ahead must I request a planned remote-work arrangement?",
+    "expected_source": "remote-work.md",
+    "expected_terms": ["five business days", "manager"],
+    "should_abstain": false
+  },
+  {
+    "id": "pto-allowance",
+    "question": "How many paid time off days does a full-time employee accrue each calendar year?",
+    "expected_source": "leave-benefits.md",
+    "expected_terms": ["15 days", "calendar year"],
+    "should_abstain": false
+  },
+  {
+    "id": "parental-leave",
+    "question": "How much paid parental leave does the sample policy provide?",
+    "expected_source": "leave-benefits.md",
+    "expected_terms": ["12 weeks", "paid parental leave"],
+    "should_abstain": false
+  },
+  {
+    "id": "purchase-approval",
+    "question": "What is the advance manager-approval limit for a single purchase?",
+    "expected_source": "expenses.md",
+    "expected_terms": ["250 USD", "manager approval"],
+    "should_abstain": false
+  },
+  {
+    "id": "incident-reporting",
+    "question": "What should I do if I think my company account was compromised?",
+    "expected_source": "information-security.md",
+    "expected_terms": ["immediately", "security help channel"],
+    "should_abstain": false
+  },
+  {
+    "id": "unsupported-per-diem",
+    "question": "What is the exact daily travel per-diem reimbursement rate?",
+    "expected_source": null,
+    "expected_terms": [],
+    "should_abstain": true
+  },
+  {
+    "id": "unsupported-medical-threshold",
+    "question": "What medical-documentation threshold does this sample set for sick leave?",
+    "expected_source": null,
+    "expected_terms": [],
+    "should_abstain": true
+  },
+  {
+    "id": "unrelated",
+    "question": "What is the capital city of Japan?",
+    "expected_source": null,
+    "expected_terms": [],
+    "should_abstain": true
+  }
+]
