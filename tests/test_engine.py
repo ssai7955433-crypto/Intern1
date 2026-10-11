@@ -69,6 +69,27 @@ def test_greeting_prefix_does_not_hide_a_policy_question() -> None:
     assert "12 weeks of paid parental leave" in response.answer
 
 
+@pytest.mark.parametrize(
+    ("question", "source", "answer_term"),
+    [
+        ("Can I work from home and how early should I tell my boss?", "remote-work.md", "five business days"),
+        ("How many vacation days do I get?", "leave-benefits.md", "15 days"),
+        ("Can I expense something that costs 300 dollars?", "expenses.md", "250 USD"),
+        ("What should I do if someone hacked my account?", "information-security.md", "immediately"),
+        ("How long can I take off after adopting a baby?", "leave-benefits.md", "12 weeks"),
+        ("Can I use my own laptop to work remotely?", "remote-work.md", "Company-owned devices"),
+    ],
+)
+def test_policy_paraphrases_find_the_relevant_evidence(
+    question: str, source: str, answer_term: str
+) -> None:
+    response = assistant().answer(question)
+
+    assert response.status == "supported"
+    assert answer_term.lower() in response.answer.lower()
+    assert response.citations[0].source == source
+
+
 @pytest.mark.parametrize("question", ["", "   "])
 def test_empty_question_is_rejected(question: str) -> None:
     with pytest.raises(ValueError, match="must not be empty"):

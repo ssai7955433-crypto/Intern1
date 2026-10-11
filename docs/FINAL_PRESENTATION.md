@@ -20,8 +20,8 @@ Project 1 · Generative AI Internship
 
 - Input: a plain-language policy question.
 - Output: structured answer, support status, source / section citation, excerpt.
-- Five answerable and three intentionally unanswerable benchmark cases.
-- Baseline acceptance: 5/5 supported cases with expected source and terms; 3/3 abstentions; automated tests pass.
+- Eleven answerable (including paraphrases) and three intentionally unanswerable benchmark cases.
+- Baseline acceptance: 11/11 supported cases with expected source and terms; 3/3 abstentions; automated tests pass.
 - These are project regression results, not measured user productivity or real-company accuracy.
 
 ## Slide 4 — Solution architecture
@@ -44,7 +44,7 @@ Optional extension: local Ollama generation, with JSON and citation-ID validatio
 
 ## Slide 6 — Validation evidence
 
-- Fixed evaluation dataset: 8 cases (5 supported, 3 unsupported).
+- Fixed evaluation dataset: 14 cases (11 supported, 3 unsupported).
 - Automated tests cover retrieval, citations, abstention, invalid input, and prompt-override refusal.
 - Run `python -m pytest` and `python -m evaluation.run_eval`.
 - Report actual command output during the live demo; do not imply broader statistical validation.

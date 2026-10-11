@@ -22,9 +22,9 @@
 
 ## Success measures and acceptance criteria
 
-The fixed eight-case benchmark has five supported and three unanswerable questions. A passing baseline run must:
+The fixed fourteen-case benchmark has eleven supported questions (including six paraphrases) and three unanswerable questions. A passing baseline run must:
 
-1. Find the expected source and exact expected answer terms in all five supported cases.
+1. Find the expected source and exact expected answer terms in all eleven supported cases.
 2. Include only citations corresponding to indexed policy sections.
 3. Abstain on all three questions not answerable from the sample policy corpus.
 4. Reject empty and overlong questions; refuse common attempts to override instructions or expose the system prompt.

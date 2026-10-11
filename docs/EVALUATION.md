@@ -2,7 +2,7 @@
 
 ## Method
 
-`evaluation/cases.json` contains five answerable questions tied to a policy file and expected text terms, plus three questions that the sample corpus must not answer. `python -m evaluation.run_eval` runs each through the deterministic assistant and prints machine-readable JSON.
+`evaluation/cases.json` contains eleven answerable questions tied to a policy file and expected text terms—including six paraphrased questions—and three questions that the sample corpus must not answer. `python -m evaluation.run_eval` runs each through the deterministic assistant and prints machine-readable JSON.
 
 The evaluator checks:
 
@@ -13,7 +13,7 @@ The evaluator checks:
 
 ## Acceptance threshold
 
-The benchmark is a small regression gate. The declared baseline threshold is **8/8 cases (100%)**, with 5/5 supported and 3/3 abstentions. Failing any case exits the evaluator with a non-zero status.
+The benchmark is a small regression gate. The declared baseline threshold is **14/14 cases (100%)**, with 11/11 supported and 3/3 abstentions. Failing any case exits the evaluator with a non-zero status.
 
 To retain evidence for a review, run:
 

@@ -35,6 +35,48 @@
     "should_abstain": false
   },
   {
+    "id": "remote-work-paraphrase",
+    "question": "Can I work from home and how early should I tell my boss?",
+    "expected_source": "remote-work.md",
+    "expected_terms": ["five business days"],
+    "should_abstain": false
+  },
+  {
+    "id": "vacation-days-paraphrase",
+    "question": "How many vacation days do I get?",
+    "expected_source": "leave-benefits.md",
+    "expected_terms": ["15 days"],
+    "should_abstain": false
+  },
+  {
+    "id": "expense-limit-paraphrase",
+    "question": "Can I expense something that costs 300 dollars?",
+    "expected_source": "expenses.md",
+    "expected_terms": ["250 USD"],
+    "should_abstain": false
+  },
+  {
+    "id": "security-incident-paraphrase",
+    "question": "What should I do if someone hacked my account?",
+    "expected_source": "information-security.md",
+    "expected_terms": ["immediately", "security help channel"],
+    "should_abstain": false
+  },
+  {
+    "id": "parental-leave-paraphrase",
+    "question": "How long can I take off after adopting a baby?",
+    "expected_source": "leave-benefits.md",
+    "expected_terms": ["12 weeks", "paid parental leave"],
+    "should_abstain": false
+  },
+  {
+    "id": "company-device-paraphrase",
+    "question": "Can I use my own laptop to work remotely?",
+    "expected_source": "remote-work.md",
+    "expected_terms": ["Company-owned devices"],
+    "should_abstain": false
+  },
+  {
     "id": "unsupported-per-diem",
     "question": "What is the exact daily travel per-diem reimbursement rate?",
     "expected_source": null,
