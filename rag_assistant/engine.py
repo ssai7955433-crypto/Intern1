@@ -10,7 +10,7 @@ from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
-from rag_assistant.safety import validate_question
+from rag_assistant.safety import is_greeting, validate_question
 from rag_assistant.schemas import AskResponse, Citation
 
 _WORD = re.compile(r"[a-z0-9]+")
@@ -151,6 +151,16 @@ class PolicyAssistant:
         refusal = validate_question(question)
         if refusal is not None:
             return AskResponse(status="refused", answer=refusal, citations=[])
+        if is_greeting(question):
+            return AskResponse(
+                status="greeting",
+                answer=(
+                    "Hi! I can help find information in the demo policy handbook. "
+                    "Try asking about remote work, paid time off, parental leave, "
+                    "expenses, or reporting a security incident."
+                ),
+                citations=[],
+            )
 
         retrieved = self.retrieve(question)
         if not retrieved:

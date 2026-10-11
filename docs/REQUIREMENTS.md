@@ -28,7 +28,8 @@ The fixed eight-case benchmark has five supported and three unanswerable questio
 2. Include only citations corresponding to indexed policy sections.
 3. Abstain on all three questions not answerable from the sample policy corpus.
 4. Reject empty and overlong questions; refuse common attempts to override instructions or expose the system prompt.
-5. Pass the automated tests from a clean install.
+5. Respond to a standalone greeting with a short welcome and supported-topic suggestions; do not treat a greeting prefix as a replacement for a policy question.
+6. Pass the automated tests from a clean install.
 
 The target on this small deterministic set is 100% for each measure. This is a regression gate, not a statistical guarantee. The test set is intentionally small; see [evaluation notes](EVALUATION.md).
 

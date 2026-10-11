@@ -19,6 +19,6 @@ class Citation(BaseModel):
 
 
 class AskResponse(BaseModel):
-    status: Literal["supported", "insufficient_evidence", "refused"]
+    status: Literal["supported", "insufficient_evidence", "refused", "greeting"]
     answer: str
     citations: list[Citation]

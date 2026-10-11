@@ -52,6 +52,23 @@ def test_prompt_override_is_refused_without_retrieval() -> None:
     assert response.citations == []
 
 
+@pytest.mark.parametrize("question", ["Hi", "hello!", " GOOD MORNING "])
+def test_standalone_greeting_gets_a_friendly_capability_response(question: str) -> None:
+    response = assistant().answer(question)
+
+    assert response.status == "greeting"
+    assert "Hi!" in response.answer
+    assert "remote work" in response.answer
+    assert response.citations == []
+
+
+def test_greeting_prefix_does_not_hide_a_policy_question() -> None:
+    response = assistant().answer("Hi, how much paid parental leave is provided?")
+
+    assert response.status == "supported"
+    assert "12 weeks of paid parental leave" in response.answer
+
+
 @pytest.mark.parametrize("question", ["", "   "])
 def test_empty_question_is_rejected(question: str) -> None:
     with pytest.raises(ValueError, match="must not be empty"):
@@ -83,3 +100,16 @@ def test_browser_demo_page_is_served() -> None:
     assert response.status_code == 200
     assert "Ask the policy handbook" in response.text
     assert 'fetch("/ask"' in response.text
+
+
+def test_ask_api_returns_greeting_status_for_hi() -> None:
+    from fastapi.testclient import TestClient
+
+    from rag_assistant.api import app
+
+    response = TestClient(app).post("/ask", json={"question": "Hi"})
+
+    assert response.status_code == 200
+    assert response.json()["status"] == "greeting"
+    assert "remote work" in response.json()["answer"]
+    assert response.json()["citations"] == []

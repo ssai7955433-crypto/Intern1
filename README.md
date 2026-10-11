@@ -83,7 +83,7 @@ Example response shape:
 }
 ```
 
-If no passage clears the retrieval threshold, the API returns `status: "insufficient_evidence"` and no citations. It does not ask the model to fill gaps.
+Standalone greetings such as `Hi` receive a brief welcome and examples of supported policy topics. If no passage clears the retrieval threshold, the API returns `status: "insufficient_evidence"` and no citations. It does not ask the model to fill gaps.
 
 ## Run checks and evaluation
 
