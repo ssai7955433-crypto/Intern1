@@ -30,6 +30,10 @@ The baseline intentionally prefers a short quotation over an unsupported paraphr
 | Mentor can run, test, and demo from a clean checkout | Commands below; [demo script](docs/DEMO_SCRIPT.md) |
 | Presentation-ready project summary | [Final presentation](docs/FINAL_PRESENTATION.md) |
 
+## Portfolio and LinkedIn assets
+
+PNG visuals and a ready-to-edit, evidence-based post draft are in [portfolio-assets/](portfolio-assets/) and [LinkedIn post draft](docs/LINKEDIN_POST.md). The UI image is labeled as an illustrative preview, and the evaluation visual explicitly describes the limits of the small fixed test set.
+
 ## Quick start
 
 Requires Python 3.10 or newer.
