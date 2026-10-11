@@ -60,6 +60,23 @@ def _tokens(text: str) -> list[str]:
     return [token for token in _WORD.findall(text.lower()) if token not in _STOP_WORDS]
 
 
+def _relevant_sentences(question: str, text: str) -> list[str]:
+    question_terms = set(_tokens(question))
+    sentences = [sentence.strip() for sentence in re.split(r"(?<=[.!?])\s+", text) if sentence.strip()]
+    scored = [
+        (len(question_terms.intersection(_tokens(sentence))), index, sentence)
+        for index, sentence in enumerate(sentences)
+    ]
+    best_score = max((score for score, _, _ in scored), default=0)
+    if best_score == 0:
+        return []
+    return [
+        sentence
+        for score, _, sentence in scored
+        if score == best_score
+    ][:2]
+
+
 def _load_chunks(directory: Path) -> list[Chunk]:
     chunks: list[Chunk] = []
     for path in sorted(directory.glob("*.md")):
@@ -166,11 +183,21 @@ class PolicyAssistant:
                     )
         if self.llm_mode == "ollama":
             answer = self._generate_with_ollama(question, citations)
+            answer_citations = citations
         else:
-            answer = " ".join(
-                f'{item.excerpt} [{item.citation}]' for item in citations[:2]
-            )
-        return AskResponse(status="supported", answer=answer, citations=citations)
+            primary = citations[0]
+            evidence = _relevant_sentences(question, primary.excerpt)
+            if not evidence:
+                return AskResponse(
+                    status="insufficient_evidence",
+                    answer="I could not find sufficient evidence in the available policy documents.",
+                    citations=[],
+                )
+            answer = " ".join(f"{sentence} [{primary.citation}]" for sentence in evidence)
+            answer_citations = [
+                primary.model_copy(update={"excerpt": " ".join(evidence)})
+            ]
+        return AskResponse(status="supported", answer=answer, citations=answer_citations)
 
     @staticmethod
     def _generate_with_ollama(question: str, citations: list[Citation]) -> str:

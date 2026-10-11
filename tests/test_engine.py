@@ -20,6 +20,17 @@ def test_supported_answer_has_retrieved_policy_citations() -> None:
     assert any(citation.source == "remote-work.md" for citation in response.citations)
 
 
+def test_answer_quotes_only_the_most_relevant_cited_policy_evidence() -> None:
+    response = assistant().answer("How much paid parental leave is provided?")
+
+    assert response.status == "supported"
+    assert "12 weeks of paid parental leave" in response.answer
+    assert "Full-time employees accrue 15 days" not in response.answer
+    assert len(response.citations) == 1
+    assert response.citations[0].citation in response.answer
+    assert "Full-time employees accrue 15 days" not in response.citations[0].excerpt
+
+
 @pytest.mark.parametrize(
     "question",
     [
