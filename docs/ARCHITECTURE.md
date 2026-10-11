@@ -31,6 +31,7 @@ Citation membership is not proof that each sentence is entailed by its cited pas
 
 ## Interfaces
 
+- `GET /`: browser-based demo UI for asking a policy question and inspecting citations.
 - `GET /health`: process health.
 - `GET /documents`: indexed source filenames.
 - `POST /ask`: question request and structured answer.

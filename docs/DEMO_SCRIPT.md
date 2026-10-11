@@ -1,5 +1,7 @@
 # Mentor demo script (5–7 minutes)
 
+The browser demo is served at `/`. In local development open `http://127.0.0.1:8000/`; on Render open the service's public URL. `/docs` provides the API explorer.
+
 ## Before the demo
 
 From the repository root:

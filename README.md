@@ -41,7 +41,21 @@ python -m pip install -r requirements.txt
 python -m uvicorn rag_assistant.api:app --reload
 ```
 
-Open <http://127.0.0.1:8000/docs> for interactive API documentation. The policy corpus is loaded from the repository; no upload or external service is required.
+Open <http://127.0.0.1:8000/> for the chat-style demo or <http://127.0.0.1:8000/docs> for interactive API documentation. The policy corpus is loaded from the repository; no upload or external service is required.
+
+## Deploy free on Render
+
+This repository includes a Render Blueprint at `render.yaml`, configured for a free Python web service. To publish a public URL:
+
+1. Push this repository to GitHub, then click:
+
+   [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/ssai7955433-crypto/Intern1)
+
+   Or sign in to [Render](https://render.com/) and choose **New → Blueprint**.
+2. Connect the GitHub account that can access `ssai7955433-crypto/Intern1`, select this repository and its `main` branch, then apply the `render.yaml` configuration.
+3. Wait for the build to finish. Render will show the public service URL; open that URL for the browser demo or append `/docs` for API docs.
+
+The free service may spin down after inactivity and take some time to respond on its first request. It uses the deterministic extractive baseline and needs no API key or paid LLM. A deployment cannot be created on your behalf without authorization to a hosting account.
 
 Ask a question:
 

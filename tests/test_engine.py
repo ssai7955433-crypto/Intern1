@@ -60,3 +60,15 @@ def test_every_returned_citation_points_to_a_known_chunk() -> None:
 
     assert response.status == "supported"
     assert {citation.citation for citation in response.citations} <= known_citations
+
+
+def test_browser_demo_page_is_served() -> None:
+    from fastapi.testclient import TestClient
+
+    from rag_assistant.api import app
+
+    response = TestClient(app).get("/")
+
+    assert response.status_code == 200
+    assert "Ask the policy handbook" in response.text
+    assert 'fetch("/ask"' in response.text
