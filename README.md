@@ -45,7 +45,7 @@ python -m pip install -r requirements.txt
 python -m uvicorn rag_assistant.api:app --reload
 ```
 
-Open <http://127.0.0.1:8000/> for the chat-style demo or <http://127.0.0.1:8000/docs> for interactive API documentation. The policy corpus is loaded from the repository; no upload or external service is required.
+Open https://intern1-rag-knowledge-assistant.onrender.com for the chat-style demo or <http://127.0.0.1:8000/docs> for interactive API documentation. The policy corpus is loaded from the repository; no upload or external service is required.
 
 ## Deploy free on Render
 
